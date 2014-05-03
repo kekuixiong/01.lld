@@ -1,0 +1,46 @@
+1、curl http://git-repo.googlecode.com/files/repo-1.12 > ~/bin/repo
+2、repo init -u https://android.googlesource.com/platform/manifest -b android-4.4_r1
+3、repo sync
+
+4、http://kekuixiong.github.com/blog/
+
+1.在github上建立blog项目
+
+在gituhub dashboard上建立一个新项目，名字为username.github.com。注意username为你github的账号，这个项目一定要用这个名字，这个名字的项目github会自动建立一个username.github.com的页面，将你在这个项目里的文件依照Jekyll摸板进行解析。
+
+2.安装Jekyll-Bootstrap
+
+其实就是下载Jekyll摸板并上传
+
+ $ git clone https://github.com/plusjade/jekyll-bootstrap.git USERNAME.github.com
+
+$ cd USERNAME.github.com
+$ git remote set-url origin git@github.com:USERNAME/USERNAME.github.com.git
+$ git push origin master
+一切正常的话几分钟后就会收到github发来的邮件通知你页面建立完毕。可以通过username.github.com进行访问了。
+
+3.本地调试Jekyll
+sudo apt-get install rake
+安装ruby的版本管理工具（rvm）
+$ curl -L get.rvm.io | bash-s stable --ruby
+如果现在你在命令行输入rvm -v会提示你并没有安装rvm,原因是系统找不到rvm命令，
+只要将路径加入PATH就行了
+$ source ~/.rvm/scripts/rvm
+
+现在输入rvm -v就会显示一下信息，说明安装成功
+安装jekyll
+$ sudo gem install jekyll
+更改环境变量在/etc/profile中加入以下几行，或者做出相应修改
+PATH=$PATH:~/.rvm/gems/ruby-2.0.0-p353/wrappers
+export PATH=$PATH:~/.rvm/gems/ruby-2.0.0-p353/wrappers:~/.rvm/rubies/ruby-2.0.0-p353/bin
+保存退出后source /etc/profile 让改动生效
+进入项目目录 
+$ jekyll --server即可通过http://localhost:4000来访问自己的blog了
+
+$ rvm -v
+rvm 1.25.3 (stable) by Wayne E. Seguin
+$ ruby -v
+ruby 2.0.0p353 (2013-11-22 revision 43784) [x86_64-linux]
+$ jekyll -v
+jekyll 1.4.2
+
